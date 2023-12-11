@@ -1075,6 +1075,74 @@ font-size: 5.5em;
     <script src="/JS/main.js"></script>
     <script src="/JS/app.js"></script>
 
+    <script>
+        
+
+// Get important Element
+const sections = document.querySelectorAll("section");
+const ul = document.getElementById("navbar__list");
+const fragment = document.createDocumentFragment();
+// create frist function
+const func = (function () {
+  // bulid loop type .for Each to reapet All sections.
+  sections.forEach((elm) => {
+    let dataLink = elm.getAttribute("data-nav");
+    let anchor = document.createElement("a");
+    console.log(anchor);
+    let textNod = document.createTextNode(dataLink);
+    console.log(textNod);
+    let list = document.createElement("li");
+    console.log(list);
+    anchor.setAttribute("class", "menu__link");
+    // bulid Append child
+    anchor.appendChild(textNod);
+    list.appendChild(anchor);
+    // bulid scroll with smooth
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      elm.scrollIntoView({ behavior: "smooth" });
+    });
+    //To improve  the performance
+    fragment.appendChild(list);
+  });
+  ul.appendChild(fragment);
+})(); // end function
+
+window.addEventListener("load", function(){
+    var spinner = document.getElementById("sp");
+    document.body.style.overflow = "hidden";
+
+    setTimeout(function(){
+        spinner.style.display = "none";
+        document.body.style.overflow = "auto";
+    },)
+});
+
+// Dark Mode Button
+
+/* UI colors for light & dark modes */
+// var lightMode = {
+/* Insert your light theme colors */
+// bodyBackground: '#F5F5F5',
+// bodyColor: '#212121',
+// };
+// var darkMode = {
+// /* Insert your dark theme colors */
+// bodyBackground: '#212121',
+// bodyColor: '#fff',
+// };
+
+let menuBtn = document.querySelector(".menu__btn");
+let navMenu = document.querySelector(".navbar__menu");
+
+menuBtn,addEventListener ("click", () => {
+navMenu.classList.toggle("closed");
+document.querySelector(".menu__btn > i").className = "fa-solid fa-xmark"
+})
+
+
+    </script>
+
 
 </body>
 </html>
